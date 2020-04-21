@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 - Sri Lanka Daily Situation Report</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="iconshortcut icon" href="./resources/virus.png"/>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("https://hpb.health.gov.lk/api/get-current-statistical",function (result) {
+                $("#updateTime").text(result.data.update_date_time+" (Last Update Time) ");
+                $("#newCases").text(result.data.local_new_cases);
+                $("#inHostipals").text(result.data.local_total_number_of_individuals_in_hospitals);
+                $("#recovered").text(result.data.local_recovered);
+                $("#deaths").text(result.data.local_deaths);
+                $("#totalCases").text(result.data.local_total_cases);
+            });
+        });
+    </script>
+    <style>
+        h1{
+            margin-bottom: 0px;
+        }
+        .tabletd{
+            width: 150px;height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row  bg-dark ">
+            <div class="col-md-12 text-white "  >
+                <h1 class="text-center display-3">CoronaVirus Disease 2019</h1>
+            </div>
+        </div>
+        <div class="row bg-secondary">
+            <div class="col-md-12 ">
+                <h1 class="text-center mt-2 mb-3  text-white"><small>Sri Lanka Daily Situation Report</small></h1>
+            </div>
+        </div>
+        <div class="row bg-light">
+            <div class="col-md-12">
+                <h3 class="text-center mt-2 mb-2 text-dark" id="updateTime"></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="padding: 0px;"">
+                <table class="table  table-bordered table-hover mb-0"  >
+                    <tr>
+                        <td class="tabletd align-middle text-center"><h1 class="display-4" id="newCases"></h1></td>
+                        <td class="align-middle"><h3>New Cases</h3></td>
+                    </tr>
+                    <tr>
+                        <td class="tabletd align-middle text-center"><h1 class="display-4" id="inHostipals"></h1></td>
+                        <td class="align-middle"><h3>Total Number of confirmed patients currently under treatement</h3></td>
+                    </tr>
+                    <tr>
+                        <td class="tabletd align-middle text-center"><h1 class="display-4" id="recovered"></h1></td>
+                        <td class="align-middle"><h3>Number of Cured and Discharged</h3></td>
+                    </tr>
+                    <tr>
+                        <td class="tabletd align-middle text-center"><h1 class="display-4" id="deaths"></h1></td>
+                        <td class="align-middle"><h3>Number of Deaths</h3></td>
+                    </tr>
+                    <tr>
+                        <td class="tabletd align-middle text-center"><h1 class="display-4" id="totalCases"></h1></td>
+                        <td class="align-middle"><h3>Total number of confirmed patients</h3></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <p>Based on https://hpb.health.gov.lk </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
